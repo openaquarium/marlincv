@@ -3,7 +3,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { Download, File, Play, Save } from "lucide-react";
+import { Download, File, LayoutTemplate, Play, Save } from "lucide-react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
 import { Button } from "./components/ui/button";
@@ -27,6 +27,10 @@ function App() {
             </Button>
           </div>
           <div className="flex items-center gap-3">
+            <Button variant="outline" className="group">
+              <LayoutTemplate className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+              <span>Template</span>
+            </Button>
             <Button variant="default" className="group">
               <Play className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
               <span>Render</span>
