@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
 import { Button } from "./components/ui/button";
 import "./App.css";
+import Sample from "./Pdf";
 
 function App() {
   return (
@@ -33,7 +34,9 @@ function App() {
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel>One</ResizablePanel>
             <ResizableHandle withHandle />
-            <ResizablePanel>Two</ResizablePanel>
+            <ResizablePanel>
+              <Sample />
+            </ResizablePanel>
           </ResizablePanelGroup>
         </div>
         <div className="flex-none h-10 bg-gray-900"></div>
