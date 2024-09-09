@@ -3,7 +3,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { File, Save } from "lucide-react";
+import { Download, File, Play, Save } from "lucide-react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
 import { Button } from "./components/ui/button";
@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="full flex flex-col">
-        <div className="flex-none h-10 mx-1 mb-1 flex items-center justify-between">
+        <div className="flex-none h-10 mr-1 mb-1 ml-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <h1 className="mr-5 text-xl font-bold">Fast CV</h1>
             <Button variant="outline" className="group">
@@ -26,7 +26,15 @@ function App() {
               <span>Save</span>
             </Button>
           </div>
-          <div>
+          <div className="flex items-center gap-3">
+            <Button variant="default" className="group">
+              <Play className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+              <span>Render</span>
+            </Button>
+            <Button variant="secondary" className="group">
+              <Download className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+              <span>Download PDF</span>
+            </Button>
             <ModeToggle />
           </div>
         </div>
