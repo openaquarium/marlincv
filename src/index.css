@@ -133,3 +133,7 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+
+.full {
+  @apply w-full h-full;
+}
