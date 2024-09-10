@@ -10,9 +10,15 @@ import { ModeToggle } from "./components/mode-toggle";
 import { Button } from "./components/ui/button";
 import "./App.css";
 import Sample from "./Pdf";
+import DnD from "./DnD";
+import { atom, useAtom } from 'jotai';
+import ResumePage from "./Resume";
+
+export const resumeData = atom(null);
 
 function App() {
-  
+
+  const [data ] = useAtom(resumeData);
   const [content, setContent] = useState<string | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +38,8 @@ function App() {
   };
 
   const handleSaveClick = async () => {
+    
+    
     try {
       const opts = {
         types: [
@@ -45,7 +53,7 @@ function App() {
       const handle = await window.showSaveFilePicker(opts);
       const writable = await handle.createWritable();
       // Write the content to the file
-      await writable.write(content);
+      await writable.write(JSON.stringify(data));
       // Close the file and write the contents to disk.
       await writable.close();
     } catch (err) {
@@ -93,7 +101,9 @@ function App() {
         </div>
         <div className="flex-1">
           <ResizablePanelGroup direction="horizontal">
-            <ResizablePanel>{content}</ResizablePanel>
+            <ResizablePanel>
+              <ResumePage />
+            </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel>
               <Sample />
