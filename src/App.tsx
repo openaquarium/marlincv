@@ -3,23 +3,25 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { useState } from 'react';
 import { Download, File, LayoutTemplate, Play, Save } from "lucide-react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
 import { Button } from "./components/ui/button";
 import "./App.css";
 import Sample from "./Pdf";
-import DnD from "./DnD";
-import { atom, useAtom } from 'jotai';
-import ResumePage from "./Resume";
 
-export const resumeData = atom(null);
+import { atom, useAtom } from 'jotai';
+import ResumePage from "./resume/Resume";
+
+
+import { educationData, experienceData, achievementData } from "./resume/Store";
+ 
 
 function App() {
 
-  const [data ] = useAtom(resumeData);
-  const [content, setContent] = useState<string | null>(null);
+  const [education, setEducation] = useAtom(educationData)
+  const [experience, setExperience] = useAtom(experienceData)
+  const [achievement, setAchievements] = useAtom(achievementData)
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -27,7 +29,12 @@ function App() {
       const reader = new FileReader();
       reader.onload = (e) => {
         const text = e.target?.result as string;
-        setContent(text);
+
+        const resumeData = JSON.parse(text);
+        setEducation(resumeData.education);
+        setExperience(resumeData.experience);
+        setAchievements(resumeData.achievement);
+        console.log(resumeData.education);
       };
       reader.readAsText(file);
     }
@@ -53,7 +60,12 @@ function App() {
       const handle = await window.showSaveFilePicker(opts);
       const writable = await handle.createWritable();
       // Write the content to the file
-      await writable.write(JSON.stringify(data));
+      const resumeData = {
+        experience,
+        achievement,
+        education
+      }
+      await writable.write(JSON.stringify(resumeData));
       // Close the file and write the contents to disk.
       await writable.close();
     } catch (err) {
