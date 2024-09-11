@@ -1,0 +1,1392 @@
+<html lang="en" class="light"><head></head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite + React + TS</title>
+  <style type="text/css" data-vite-dev-id="E:/masum/fastcv/src/App.css">#root {
+  width: 100%;
+  height: 100vh;
+  padding: 2px;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+</style><style type="text/css" data-vite-dev-id="E:/masum/fastcv/src/index.css">:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/*
+! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+:root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+.dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+.left-2 {
+  left: 0.5rem;
+}
+.z-10 {
+  z-index: 10;
+}
+.z-50 {
+  z-index: 50;
+}
+.-mx-1 {
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+.ml-3 {
+  margin-left: 0.75rem;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mr-1 {
+  margin-right: 0.25rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.mr-5 {
+  margin-right: 1.25rem;
+}
+.flex {
+  display: flex;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.contents {
+  display: contents;
+}
+.h-10 {
+  height: 2.5rem;
+}
+.h-2\.5 {
+  height: 0.625rem;
+}
+.h-3\.5 {
+  height: 0.875rem;
+}
+.h-4 {
+  height: 1rem;
+}
+.h-8 {
+  height: 2rem;
+}
+.h-9 {
+  height: 2.25rem;
+}
+.h-\[1\.2rem\] {
+  height: 1.2rem;
+}
+.h-\[1rem\] {
+  height: 1rem;
+}
+.h-full {
+  height: 100%;
+}
+.h-px {
+  height: 1px;
+}
+.min-h-\[60px\] {
+  min-height: 60px;
+}
+.w-2\.5 {
+  width: 0.625rem;
+}
+.w-3 {
+  width: 0.75rem;
+}
+.w-3\.5 {
+  width: 0.875rem;
+}
+.w-4 {
+  width: 1rem;
+}
+.w-9 {
+  width: 2.25rem;
+}
+.w-\[1\.2rem\] {
+  width: 1.2rem;
+}
+.w-\[1rem\] {
+  width: 1rem;
+}
+.w-full {
+  width: 100%;
+}
+.w-px {
+  width: 1px;
+}
+.min-w-\[8rem\] {
+  min-width: 8rem;
+}
+.flex-1 {
+  flex: 1 1 0%;
+}
+.flex-none {
+  flex: none;
+}
+.rotate-0 {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-90 {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.scale-0 {
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.cursor-default {
+  cursor: default;
+}
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-3 {
+  gap: 0.75rem;
+}
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+.rounded-md {
+  border-radius: calc(var(--radius) - 2px);
+}
+.rounded-sm {
+  border-radius: calc(var(--radius) - 4px);
+}
+.border {
+  border-width: 1px;
+}
+.border-input {
+  border-color: hsl(var(--input));
+}
+.bg-background {
+  background-color: hsl(var(--background));
+}
+.bg-border {
+  background-color: hsl(var(--border));
+}
+.bg-destructive {
+  background-color: hsl(var(--destructive));
+}
+.bg-gray-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+.bg-muted {
+  background-color: hsl(var(--muted));
+}
+.bg-popover {
+  background-color: hsl(var(--popover));
+}
+.bg-primary {
+  background-color: hsl(var(--primary));
+}
+.bg-secondary {
+  background-color: hsl(var(--secondary));
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.fill-current {
+  fill: currentColor;
+}
+.p-1 {
+  padding: 0.25rem;
+}
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.pl-8 {
+  padding-left: 2rem;
+}
+.pr-2 {
+  padding-right: 0.5rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+.text-destructive-foreground {
+  color: hsl(var(--destructive-foreground));
+}
+.text-popover-foreground {
+  color: hsl(var(--popover-foreground));
+}
+.text-primary {
+  color: hsl(var(--primary));
+}
+.text-primary-foreground {
+  color: hsl(var(--primary-foreground));
+}
+.text-secondary-foreground {
+  color: hsl(var(--secondary-foreground));
+}
+.underline-offset-4 {
+  text-underline-offset: 4px;
+}
+.opacity-60 {
+  opacity: 0.6;
+}
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.outline {
+  outline-style: solid;
+}
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+@keyframes enter {
+
+  from {
+    opacity: var(--tw-enter-opacity, 1);
+    transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0));
+  }
+}
+@keyframes exit {
+
+  to {
+    opacity: var(--tw-exit-opacity, 1);
+    transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0));
+  }
+}
+
+.full {
+  height: 100%;
+  width: 100%;
+}
+
+.placeholder\:text-muted-foreground::-moz-placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.placeholder\:text-muted-foreground::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.after\:absolute::after {
+  content: var(--tw-content);
+  position: absolute;
+}
+
+.after\:inset-y-0::after {
+  content: var(--tw-content);
+  top: 0px;
+  bottom: 0px;
+}
+
+.after\:left-1\/2::after {
+  content: var(--tw-content);
+  left: 50%;
+}
+
+.after\:w-1::after {
+  content: var(--tw-content);
+  width: 0.25rem;
+}
+
+.after\:-translate-x-1\/2::after {
+  content: var(--tw-content);
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:bg-accent:hover {
+  background-color: hsl(var(--accent));
+}
+
+.hover\:bg-destructive\/90:hover {
+  background-color: hsl(var(--destructive) / 0.9);
+}
+
+.hover\:bg-primary\/90:hover {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
+.hover\:bg-secondary\/80:hover {
+  background-color: hsl(var(--secondary) / 0.8);
+}
+
+.hover\:text-accent-foreground:hover {
+  color: hsl(var(--accent-foreground));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
+}
+
+.focus\:bg-accent:focus {
+  background-color: hsl(var(--accent));
+}
+
+.focus\:text-accent-foreground:focus {
+  color: hsl(var(--accent-foreground));
+}
+
+.focus-visible\:outline-none:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-visible\:ring-1:focus-visible {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus-visible\:ring-ring:focus-visible {
+  --tw-ring-color: hsl(var(--ring));
+}
+
+.focus-visible\:ring-offset-1:focus-visible {
+  --tw-ring-offset-width: 1px;
+}
+
+.disabled\:pointer-events-none:disabled {
+  pointer-events: none;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.group:hover .group-hover\:scale-110 {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[disabled\]\:pointer-events-none[data-disabled] {
+  pointer-events: none;
+}
+
+.data-\[panel-group-direction\=vertical\]\:h-px[data-panel-group-direction="vertical"] {
+  height: 1px;
+}
+
+.data-\[panel-group-direction\=vertical\]\:w-full[data-panel-group-direction="vertical"] {
+  width: 100%;
+}
+
+.data-\[panel-group-direction\=vertical\]\:flex-col[data-panel-group-direction="vertical"] {
+  flex-direction: column;
+}
+
+.data-\[state\=open\]\:bg-accent[data-state="open"] {
+  background-color: hsl(var(--accent));
+}
+
+.data-\[disabled\]\:opacity-50[data-disabled] {
+  opacity: 0.5;
+}
+
+.data-\[state\=open\]\:animate-in[data-state="open"] {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+
+.data-\[state\=closed\]\:animate-out[data-state="closed"] {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+
+.data-\[state\=closed\]\:fade-out-0[data-state="closed"] {
+  --tw-exit-opacity: 0;
+}
+
+.data-\[state\=open\]\:fade-in-0[data-state="open"] {
+  --tw-enter-opacity: 0;
+}
+
+.data-\[state\=closed\]\:zoom-out-95[data-state="closed"] {
+  --tw-exit-scale: .95;
+}
+
+.data-\[state\=open\]\:zoom-in-95[data-state="open"] {
+  --tw-enter-scale: .95;
+}
+
+.data-\[side\=bottom\]\:slide-in-from-top-2[data-side="bottom"] {
+  --tw-enter-translate-y: -0.5rem;
+}
+
+.data-\[side\=left\]\:slide-in-from-right-2[data-side="left"] {
+  --tw-enter-translate-x: 0.5rem;
+}
+
+.data-\[side\=right\]\:slide-in-from-left-2[data-side="right"] {
+  --tw-enter-translate-x: -0.5rem;
+}
+
+.data-\[side\=top\]\:slide-in-from-bottom-2[data-side="top"] {
+  --tw-enter-translate-y: 0.5rem;
+}
+
+.data-\[panel-group-direction\=vertical\]\:after\:left-0[data-panel-group-direction="vertical"]::after {
+  content: var(--tw-content);
+  left: 0px;
+}
+
+.data-\[panel-group-direction\=vertical\]\:after\:h-1[data-panel-group-direction="vertical"]::after {
+  content: var(--tw-content);
+  height: 0.25rem;
+}
+
+.data-\[panel-group-direction\=vertical\]\:after\:w-full[data-panel-group-direction="vertical"]::after {
+  content: var(--tw-content);
+  width: 100%;
+}
+
+.data-\[panel-group-direction\=vertical\]\:after\:-translate-y-1\/2[data-panel-group-direction="vertical"]::after {
+  content: var(--tw-content);
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.data-\[panel-group-direction\=vertical\]\:after\:translate-x-0[data-panel-group-direction="vertical"]::after {
+  content: var(--tw-content);
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.dark\:-rotate-90:is(.dark *) {
+  --tw-rotate: -90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.dark\:rotate-0:is(.dark *) {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.dark\:scale-0:is(.dark *) {
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.dark\:scale-100:is(.dark *) {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&\[data-panel-group-direction\=vertical\]\>div\]\:rotate-90[data-panel-group-direction=vertical]>div {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}</style></head>
+  <body cz-shortcut-listen="true">
+    <div id="root"><div class="full flex flex-col"><div class="flex-none h-10 mr-1 mb-1 ml-3 flex items-center justify-between"><div class="flex items-center gap-3"><h1 class="mr-5 text-xl font-bold">Fast CV</h1><input type="file" id="fileInput" style="display: none;"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 group"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg><span>Open</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 group"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg><span>Save</span></button></div><div class="flex items-center gap-3"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 group"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-template h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2"><rect width="18" height="7" x="3" y="3" rx="1"></rect><rect width="9" height="7" x="3" y="14" rx="1"></rect><rect width="5" height="7" x="16" y="14" rx="1"></rect></svg><span>Template</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 group"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg><span>Render</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 group"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg><span>Download PDF</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button" id="radix-:r2:" aria-haspopup="menu" aria-expanded="false" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg><span class="sr-only">Toggle theme</span></button></div></div><div class="flex-1"><div class="flex h-full w-full data-[panel-group-direction=vertical]:flex-col" data-panel-group="" data-panel-group-direction="horizontal" data-panel-group-id=":r5:" style="display: flex; flex-direction: row; height: 100%; overflow: hidden; width: 100%;"><div class="" data-panel="" data-panel-group-id=":r5:" data-panel-id=":r7:" data-panel-size="50.0" style="flex: 50 1 0px; overflow: hidden;"><textarea class="flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 full" placeholder="Type your message here." id="input" style="height: 58px;">hello</textarea></div><div class="relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&amp;[data-panel-group-direction=vertical]>div]:rotate-90" role="separator" tabindex="0" data-panel-group-direction="horizontal" data-panel-group-id=":r5:" data-resize-handle="" data-resize-handle-state="inactive" data-panel-resize-handle-enabled="true" data-panel-resize-handle-id=":r9:" aria-controls=":r7:" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" style="touch-action: none; user-select: none;"><div class="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5"><path d="M5.5 4.625C6.12132 4.625 6.625 4.12132 6.625 3.5C6.625 2.87868 6.12132 2.375 5.5 2.375C4.87868 2.375 4.375 2.87868 4.375 3.5C4.375 4.12132 4.87868 4.625 5.5 4.625ZM9.5 4.625C10.1213 4.625 10.625 4.12132 10.625 3.5C10.625 2.87868 10.1213 2.375 9.5 2.375C8.87868 2.375 8.375 2.87868 8.375 3.5C8.375 4.12132 8.87868 4.625 9.5 4.625ZM10.625 7.5C10.625 8.12132 10.1213 8.625 9.5 8.625C8.87868 8.625 8.375 8.12132 8.375 7.5C8.375 6.87868 8.87868 6.375 9.5 6.375C10.1213 6.375 10.625 6.87868 10.625 7.5ZM5.5 8.625C6.12132 8.625 6.625 8.12132 6.625 7.5C6.625 6.87868 6.12132 6.375 5.5 6.375C4.87868 6.375 4.375 6.87868 4.375 7.5C4.375 8.12132 4.87868 8.625 5.5 8.625ZM10.625 11.5C10.625 12.1213 10.1213 12.625 9.5 12.625C8.87868 12.625 8.375 12.1213 8.375 11.5C8.375 10.8787 8.87868 10.375 9.5 10.375C10.1213 10.375 10.625 10.8787 10.625 11.5ZM5.5 12.625C6.12132 12.625 6.625 12.1213 6.625 11.5C6.625 10.8787 6.12132 10.375 5.5 10.375C4.87868 10.375 4.375 10.8787 4.375 11.5C4.375 12.1213 4.87868 12.625 5.5 12.625Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></div><div class="" data-panel="" data-panel-group-id=":r5:" data-panel-id=":rb:" data-panel-size="50.0" style="flex: 50 1 0px; overflow: hidden;"><div id="content"><svg class="typst-doc" viewBox="0 0 596.000 842.000" width="616" height="870.255033557047" data-width="596.000" data-height="842.000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><style type="text/css">.typst-text {
+  pointer-events: bounding-box;
+}
+
+.tsel span,
+.tsel {
+  left: 0;
+  position: fixed;
+  text-align: justify;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  text-align-last: justify;
+  color: transparent;
+  white-space: pre;
+}
+.tsel span::-moz-selection,
+.tsel::-moz-selection {
+  color: transparent;
+  background: #7db9dea0;
+}
+.tsel span::selection,
+.tsel::selection {
+  color: transparent;
+  background: #7db9dea0;
+}
+.pseudo-link {
+  fill: transparent;
+  cursor: pointer;
+  pointer-events: all;
+}
+svg {
+  fill: none;
+}
+
+.outline_glyph path,
+path.outline_glyph {
+  fill: var(--glyph_fill);
+  stroke: var(--glyph_stroke);
+}
+
+.outline_glyph path,
+path.outline_glyph {
+  transition: 0.2s fill stroke;
+}
+.hover .typst-text {
+  --glyph_fill: #66bab7;
+  --glyph_stroke: #66bab7;
+}
+
+.typst-jump-ripple,
+.typst-debug-react-ripple {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  position: absolute;
+  border-radius: 50%;
+}
+.typst-jump-ripple {
+  border: 1px solid #66bab7;
+}
+.typst-debug-react-ripple {
+  border: 1px solid #cb1b45;
+}
+@keyframes typst-jump-ripple-effect {
+  to {
+    width: 10vw;
+    height: 10vw;
+    opacity: 0.01;
+    margin: -5vw;
+  }
+}
+@keyframes typst-debug-react-ripple-effect {
+  to {
+    width: 3vw;
+    height: 3vw;
+    opacity: 0.01;
+    margin: -1.5vw;
+  }
+}
+</style><defs class="glyph"><path id="gjzirCkg" class="outline_glyph" d="M 254 578 L 625 584 Q 656 584 655 612 Q 655 729 605 778 Q 555 827 485 827 Q 458 827 432 820 Q 406 813 368 790.5 Q 330 768 299 713 Q 268 658 254 578 Z M 791 190 Q 826 188 834 158 Q 697 -20 485 -20 Q 282 -20 172 111 Q 76 222 76 414 Q 76 631 206 763 Q 336 895 485 895 Q 831 895 831 539 Q 831 504 793 504 L 248 508 Q 248 336 313 227 Q 403 80 537 80 Q 623 80 677.5 104.5 Q 732 129 791 190 Z "></path><path id="gjzirCks" class="outline_glyph" d="M 342 586 L 342 250 Q 342 163 352.5 126.5 Q 363 90 385 79 Q 407 68 464 63 Q 473 54 473.5 29.5 Q 474 5 464 -4 Q 349 0 262 0 Q 172 0 37 -4 Q 28 5 28 29.5 Q 28 54 37 63 Q 88 67 110.5 72 Q 133 77 152 96.5 Q 171 116 175.5 150 Q 180 184 180 250 L 180 1145 Q 180 1211 177 1243.5 Q 174 1276 151.5 1291.5 Q 129 1307 116.5 1308 Q 104 1309 49 1313 Q 26 1336 37 1374 Q 219 1388 324 1430 Q 351 1430 350 1409 Q 342 1327 342 1194 L 340 733 Q 340 708 357 729 Q 359 732 360 733 Q 510 899 709 899 Q 826 899 879 829 Q 934 757 934 555 L 934 250 Q 934 129 957.5 100.5 Q 981 72 1071 63 Q 1079 53 1079 28.5 Q 1079 4 1071 -4 Q 936 0 854 0 Q 760 0 645 -4 Q 637 6 637 30.5 Q 637 55 645 63 Q 729 71 750.5 100 Q 772 129 772 250 L 772 561 Q 772 670 748 719 Q 711 793 639 793 Q 500 793 377 672 Q 342 634 342 586 Z "></path><path id="gjzirCk8" class="outline_glyph" d="M 195 250 L 195 1145 Q 195 1258 174.5 1282.5 Q 154 1307 63 1313 Q 40 1336 51 1374 Q 233 1388 338 1430 Q 365 1430 365 1409 Q 357 1327 356 1194 L 356 250 Q 356 127 382 97.5 Q 408 68 504 63 Q 512 53 512 28.5 Q 512 4 504 -4 Q 369 0 276 0 Q 190 0 47 -4 Q 37 4 37 28.5 Q 37 53 47 63 Q 143 67 169 97 Q 195 127 195 250 Z "></path><path id="gjzirClI" class="outline_glyph" d="M 84 420 Q 84 623 197 756 Q 319 899 518 899 Q 665 899 766.5 826.5 Q 868 754 908 653.5 Q 948 553 948 438 Q 948 224 815 94 Q 698 -21 514 -20 Q 309 -20 196.5 113 Q 84 246 84 420 Z M 487 827 Q 260 827 260 467 Q 260 401 275.5 333.5 Q 291 266 321.5 200.5 Q 352 135 409.5 93 Q 467 51 543 51 Q 633 51 702.5 125 Q 772 199 772 373 Q 772 592 696 709.5 Q 620 827 487 827 Z "></path></defs><defs class="clip-path"></defs><style type="text/css"></style><g class="typst-page" transform="translate(0, 0)" data-tid="pyUifAfk6fJw1wpe5Qvc58o" data-page-width="596" data-page-height="842"><g data-tid="gyUifAfk6fJw1wpe5Qvc58o" class="typst-group"><g transform="translate(70.866,78.106)" data-tid="pUVpN3n5IXUs/1/j9j7hPrI"><g data-tid="gUVpN3n5IXUs/1/j9j7hPrI" class="typst-text" fill="#000" transform="scale(0.0053710938,-0.0053710938)"><use x="0" href="#gjzirCks"></use><use x="1101" href="#gjzirCkg"></use><use x="2016" href="#gjzirCk8"></use><use x="2556" href="#gjzirCk8"></use><use x="3096" href="#gjzirClI"></use><g transform="scale(16,-16)"><foreignObject x="0" y="-114.44" width="258.00" height="128.00"><h5:div class="tsel" style="font-size: 128px">hello</h5:div></foreignObject></g></g></g><g transform="translate(70.866,70.866)" data-tid="pIDGJFrX/aWUFcQUDQtDdIM"><g data-tid="gIDGJFrX/aWUFcQUDQtDdIM" class="typst-content-hint" data-hint="a"></g></g></g></g><script type="text/javascript">const ignoredEvent=function(){const t={};let n,e;return function(i,u,r){e=new Date().getTime(),r=r||"ignored event",n=t[r]?e-t[r]:e,n&gt;u&amp;&amp;(t[r]=e,i())}}(),fc=(t,n)=&gt;{const e=[];for(let i=0;i&lt;t.length;i++){const u=t[i];n(u)&amp;&amp;e.push(u)}return e},overLappingDom=(t,n)=&gt;!(t.right&lt;n.left||t.left&gt;n.right||t.bottom&lt;n.top||t.top&gt;n.bottom),almostOverLapping=(t,n)=&gt;{const e=t.getBoundingClientRect(),i=n.getBoundingClientRect();return overLappingDom(e,i)&amp;&amp;Math.abs(e.left-i.left)+Math.abs(e.right-i.right)&lt;.5*Math.max(e.width,i.width)&amp;&amp;Math.abs(e.bottom-i.bottom)+Math.abs(e.top-i.top)&lt;.5*Math.max(e.height,i.height)},gr=window.typstGetRelatedElements=t=&gt;{let n=t.relatedElements;return n==null&amp;&amp;(n=t.relatedElements=searchIntersections(t)),n},getRelatedElements=t=&gt;gr(t.target),findAncestor=(t,n)=&gt;{for(;t&amp;&amp;!t.classList.contains(n);)t=t.parentElement;return t};function findGlyphListForText(t){const n=findAncestor(t,"typst-text");return n&amp;&amp;fc(n.children,e=&gt;e.tagName==="use")}const searchIntersections=function(t){const n=findAncestor(t,"typst-group");return n&amp;&amp;fc(n.children,e=&gt;almostOverLapping(e,t))};function nextNode(t){if(t.hasChildNodes())return t.firstChild;for(;t&amp;&amp;!t.nextSibling;)t=t.parentNode;return t?t.nextSibling:null}function getRangeSelectedNodes(t,n){var e=t.startContainer,i=t.endContainer;if(e==i){if(n(e))return[e];if(n(e.parentElement))return[e.parentElement]}for(var u=[];e&amp;&amp;e!=i;)e=nextNode(e),n(e)&amp;&amp;u.push(e);for(e=t.startContainer;e&amp;&amp;e!=t.commonAncestorContainer;)n(e)&amp;&amp;u.unshift(e),e=e.parentNode;return u}function getSelectedNodes(t){if(window.getSelection){var n=window.getSelection();if(!n.isCollapsed){if(n.rangeCount===1)return getRangeSelectedNodes(n.getRangeAt(0),t);let e=[];for(let i=0,u=n.rangeCount;i&lt;u;i++)e.push(...getRangeSelectedNodes(n.getRangeAt(i),t));return e}}return[]}function getGlyphLenShape(t){return t.map(n=&gt;{const e=n.getAttribute("href"),i=document.getElementById(e.slice(1));return 1+Number.parseInt(i?.getAttribute("data-liga-len")||"0")})}function getGlyphAdvanceShape(t){return t.map(n=&gt;Number.parseInt(n.getAttribute("x")||"0"))}function adjsutTextSelection(t,n){t.addEventListener("copy",s=&gt;{const c=getSelectedNodes(d=&gt;d.classList?.contains("tsel")||d.classList?.contains("tsel-tok")||d.classList?.contains("typst-content-hint")),g=[];let o=!1;for(let d of c)if(d.classList.contains("tsel"))d.hasAttribute("data-typst-layout-checked")||g.push(d.textContent),o=!0;else if(d.classList.contains("tsel-tok"))g.push(d.textContent);else if(o){const v=String.fromCodePoint(Number.parseInt(d.getAttribute("data-hint")||"0",16))||`
+`;g.push(v),o=!0}const m=g.join("").replace(/\u00a0/g," ");console.log("user copy",m),navigator?.clipboard?navigator.clipboard.writeText(m):s.clipboardData.setData("text/plain",m),s.preventDefault()});const e=s=&gt;s.nodeType===Node.TEXT_NODE?s.parentElement:s,i=s=&gt;{const c=e(s);return c?.classList?.contains("tsel")?c:void 0},u=s=&gt;`&lt;div style="position: absolute; float: left; left: ${s.left+window.scrollX}px; top: ${s.top+window.scrollY}px; width: ${s.width}px; height: ${s.height}px; background-color: #7db9dea0;"&gt;&lt;/div&gt;`,r=s=&gt;{s&amp;&amp;(s.innerHTML="")};let S=!1;window.addEventListener("mousedown",s=&gt;{s.button===0&amp;&amp;(S=!0)}),window.addEventListener("mouseup",s=&gt;{s.button===0&amp;&amp;(S=!1)}),t.addEventListener("mousemove",s=&gt;{S&amp;&amp;ignoredEvent(()=&gt;{p(s)},2,"doc-text-sel")});function p(s){s.target?.classList.contains("tsel-tok")||f(!0,s)}document.addEventListener("selectionchange",()=&gt;f(!1));function f(s,c){const g=window.getSelection();let o=document.getElementById("tsel-sel-box");if(!g?.rangeCount){r(o);return}const m=g.getRangeAt(0),d=g.getRangeAt(g.rangeCount-1);if(!m||!d)return;const v=l=&gt;l?.classList.contains("text-guard")||l?.classList.contains("typst-page")||l?.classList.contains("typst-search-hint"),C=v(e(m.startContainer)),y=v(e(d.endContainer));if(C||y){C&amp;&amp;y&amp;&amp;r(o);return}r(o),o||(o=document.createElement("div"),o.id="tsel-sel-box",o.style.zIndex="100",o.style.position="absolute",o.style.pointerEvents="none",o.style.left="0",o.style.top="0",o.style.float="left",document.body.appendChild(o));const N=i(m.startContainer),L=i(d.endContainer),k=getSelectedNodes(l=&gt;l.classList?.contains("tsel")||l.classList?.contains("typst-search-hint")||l.classList?.contains("tsel-tok")),A=new Range,E=[],T=(l,a,h)=&gt;{A.setStartBefore(l),A.setEndAfter(a),E.push(u(A.getBoundingClientRect()))},b=new Map;for(let l of k)if(l.classList.contains("tsel-tok")){const a=l.parentElement,h=Array.from(a.children).indexOf(l);if(!b.has(a))b.set(a,[h,h]);else{const[w,x]=b.get(a);b.set(a,[Math.min(w,h),Math.max(x,h)])}}else if(l.classList.contains("tsel")&amp;&amp;!l.hasAttribute("data-typst-layout-checked")){const a=l===N?m.startOffset:0,h=l===L?d.endOffset-1:-1;b.set(l,[a,h])}if(s){let l=1e11,a=-1;for(const h of b.keys()){const w=h.getAttribute("data-selection-index");if(!w)continue;const x=Number.parseInt(w);l=Math.min(l,x),a=Math.max(a,x)}if(a!==-1){const h=c.clientX,w=c.clientY,x=n.flow;for(;;){const R=x[a],M=R.getBoundingClientRect();if((h&gt;M.right||w&gt;M.bottom)&amp;&amp;(b.set(R,[0,-1]),a+1&lt;x.length)){a+=1;const O=x[a].getBoundingClientRect();if(M.bottom&gt;O.top&amp;&amp;M.top&lt;O.bottom)continue}break}}}for(let[l,[a,h]]of b){const w=findGlyphListForText(l);if(!w?.length)continue;if(a===0&amp;&amp;h===-1){T(w[0],w[w.length-1],h);continue}const x=getGlyphLenShape(w),R=O=&gt;{let j=0;for(let P=0;P&lt;x.length;P++){if(j+x[P]&gt;O)return w[P];j+=x[P]}};let M=w[0];a!==0&amp;&amp;(M=R(a)||M);let B=w[w.length-1];h!==-1&amp;&amp;(B=R(h)||B),T(M,B,h)}o.innerHTML=E.join("")}}function createPseudoText(t){const n=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");n.setAttribute("width","1"),n.setAttribute("height","1"),n.setAttribute("x","0"),n.setAttribute("y","0");const e=document.createElement("span");return e.textContent="&nbsp;",e.style.width=e.style.height="100%",e.style.textAlign="justify",e.style.opacity="0",e.classList.add(t),n.append(e),n}const linkmove=t=&gt;ignoredEvent(()=&gt;gr(t.target)?.forEach(n=&gt;n.classList.add("hover")),200,"mouse-move"),linkleave=t=&gt;gr(t.target)?.forEach(n=&gt;n.classList.remove("hover"));window.typstProcessSvg=function(t,n){let e={flow:[]};for(var i=t.getElementsByClassName("pseudo-link"),u=0;u&lt;i.length;u++){var r=i[u];r.addEventListener("mousemove",linkmove),r.addEventListener("mouseleave",linkleave)}const S=n?.layoutText??!0;if(S&amp;&amp;(setTimeout(()=&gt;{const p=document.createElement("style");p.innerHTML=`.tsel { font-family: monospace; text-align-last: left !important; -moz-text-size-adjust: none; -webkit-text-size-adjust: none; text-size-adjust: none; }
+.tsel span { float: left !important; position: absolute !important; width: fit-content !important; top: 0 !important; }
+.typst-search-hint { font-size: 2048px; color: transparent; width: 100%; height: 100%; }
+.typst-search-hint { color: transparent; user-select: none; }
+.typst-search-hint::-moz-selection { color: transparent; background: #00000001; }
+.typst-search-hint::selection { color: transparent; background: #00000001; }
+.tsel span::-moz-selection,
+.tsel::-moz-selection {
+  background: transparent !important;
+}
+.tsel span::selection,
+.tsel::selection {
+  background: transparent !important;
+} `,document.getElementsByTagName("head")[0].appendChild(p);const f=window.devicePixelRatio||1;t.style.setProperty("--typst-font-scale",f.toString()),window.addEventListener("resize",()=&gt;{const s=window.devicePixelRatio||1;t.style.setProperty("--typst-font-scale",s.toString())}),window.layoutText(t,e)},0),adjsutTextSelection(t,e)),t.addEventListener("click",p=&gt;{let f=p.target;for(;f;){const s=f.getAttribute("data-span");if(s){console.log("source-span of this svg element",s);const c=document.body||document.firstElementChild,g=c.getBoundingClientRect(),o=window.innerWidth||0,m=p.clientX-g.left+.015*o,d=p.clientY-g.top+.015*o;triggerRipple(c,m,d,"typst-debug-react-ripple","typst-debug-react-ripple-effect .4s linear");return}f=f.parentElement}}),S&amp;&amp;t.querySelectorAll(".typst-page").forEach(p=&gt;{p.prepend(createPseudoText("text-guard"))}),window.location.hash){const f=window.location.hash.split("-");if(f.length===2&amp;&amp;f[0]==="#loc"){const s=f[1].split("x");if(s.length===3){const c=Number.parseInt(s[0]),g=Number.parseFloat(s[1]),o=Number.parseFloat(s[2]);window.handleTypstLocation(t,c,g,o)}}}},window.layoutText=function(t,n){const e=Array.from(t.querySelectorAll(".tsel"));n.flow=e;const i=performance.now(),u=document.createElementNS("http://www.w3.org/1999/xhtml","canvas").getContext("2d");u.font="128px sans-serif";const r=u.measureText("A").width,S=[],p=(s,c)=&gt;{const g=e.slice(s,c);s-=1;for(let o of g)if(s+=1,!o.getAttribute("data-typst-layout-checked")&amp;&amp;(o.setAttribute("data-selection-index",s.toString()),o.setAttribute("data-typst-layout-checked","1"),o.style.fontSize)){const m=o.parentElement,d=o.innerText,v=m.cloneNode(!0),C=v.firstElementChild;C&amp;&amp;(C.className="typst-search-hint"),m.parentElement.insertBefore(v,m),S.push([o,d]);const y=findGlyphListForText(o);if(!y)continue;const N=getGlyphLenShape(y),L=getGlyphAdvanceShape(y).map(b=&gt;b/16);let k=!1;const A=[];let E=0,T=0;for(let b of d){if(E&gt;=L.length){k=!0;break}let l=L[E];N[E]&gt;1&amp;&amp;(l+=T*r),T++,T&gt;=N[E]&amp;&amp;(E++,T=0);const a=document.createElement("span");a.textContent=b,a.classList.add("tsel-tok"),a.style.left=`${l}px`,A.push(a)}if(k)continue;o.innerHTML="",o.append(...A)}console.log(`layoutText ${e.length} elements used since ${performance.now()-i} ms`)},f=100;for(let s=0;s&lt;e.length;s+=f){const c=s;setTimeout(()=&gt;{p(c,c+f)})}},window.handleTypstLocation=function(t,n,e,i,u){const r=u?.behavior||"smooth",S=window.assignSemaHash||((c,g,o)=&gt;{location.hash=`loc-${c}x${g.toFixed(2)}x${o.toFixed(2)}`}),p=findAncestor(t,"typst-doc");if(!p){console.warn("no typst-doc found",t);return}const f=p.children;let s=0;for(let c=0;c&lt;f.length;c++)if(f[c].tagName==="g"&amp;&amp;s++,s==n){const g=window.innerWidth*.01,o=window.innerHeight*.01,m=f[c],d=Number.parseFloat(p.getAttribute("data-width")||p.getAttribute("width")||"0")||0,v=Number.parseFloat(p.getAttribute("data-height")||p.getAttribute("height")||"0")||0,C=p.getBoundingClientRect(),y={left:C.left,top:C.top,width:C.width,height:C.height},N=7*g,L=38.2*o,k=m.transform.baseVal.consolidate()?.matrix;k&amp;&amp;(y.left+=k.e/d*y.width,y.top+=k.f/v*y.height);const A=document.body||document.firstElementChild,E=A.getBoundingClientRect(),T=y.left-E.left+e/d*y.width-N,b=y.top-E.top+i/v*y.height-L,l=T+N,a=b+L;window.scrollTo({behavior:r,left:T,top:b}),r!=="instant"&amp;&amp;triggerRipple(A,l,a,"typst-jump-ripple","typst-jump-ripple-effect .4s linear"),S(s,e,i);return}};function triggerRipple(t,n,e,i,u){const r=document.createElement("div");r.className=i,r.style.left=`${n}px`,r.style.top=`${e}px`,t.appendChild(r),r.style.animation=u,r.onanimationend=()=&gt;{t.removeChild(r)}}var scriptTag=document.currentScript;if(scriptTag){console.log("new svg util updated 37  ",performance.now());const t=findAncestor(scriptTag,"typst-doc");t&amp;&amp;window.typstProcessSvg(t)}
+</script></svg></div></div></div></div><div class="flex-none h-10 bg-gray-900"></div></div></div>
+    <script type="module" src="/src/main.tsx?t=1726054073520"></script>
+  
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@myriaddreamin/typst.ts/dist/esm/contrib/all-in-one-lite.bundle.js" id="typst"></script></body></html>
