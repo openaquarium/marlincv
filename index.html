@@ -5,9 +5,34 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <script
+    type="module"
+    src="/all-in-one-lite.bundle.js"
+    id="typst"
+  ></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      document.getElementById('typst').addEventListener('load', function () {
+        $typst.setCompilerInitOptions({
+          getModule: () =>
+            '/typst_ts_web_compiler_bg.wasm',
+        });
+        $typst.setRendererInitOptions({
+          getModule: () =>
+            '/typst_ts_renderer_bg.wasm',
+        });
+
+        // document.getElementById('export').onclick = () => exportPdf(input.value);
+        // input.oninput = () => {
+        //   previewSvg(input.value);
+        //   input.style.height = '5px';
+        //   input.style.height = input.scrollHeight + 'px';
+        // };
+        // previewSvg(input.value);
+      });
+    </script>
   </body>
 </html>
