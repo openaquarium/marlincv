@@ -7,8 +7,9 @@ import "./App.css";
 import { Textarea } from "@/components/ui/textarea"
 
 
+
 function Preview() {
-  const [content, setContent] = useState<string>();
+ 
   const [inputValue, setInputValue] = useState("Hello, World!");
   const contentDivRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -28,7 +29,7 @@ function Preview() {
           const svgElem = contentDivRef.current.firstElementChild as SVGElement;
           const width = Number.parseFloat(svgElem.getAttribute('width') || '0');
           const height = Number.parseFloat(svgElem.getAttribute('height') || '0');
-          const cw = document.body.clientWidth - 40;
+          const cw = document.body.clientWidth/2;
           svgElem.setAttribute('width', cw.toString());
           svgElem.setAttribute('height', ((height * cw) / width).toString());
         } else {
