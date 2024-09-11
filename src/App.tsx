@@ -28,11 +28,12 @@ function App() {
 
   useEffect(() => {
     const previewSvg = (mainContent: string) => {
-      console.log('previewSvg', mainContent);
+      console.log('previewSvg', mainContent); 
       if (typeof $typst !== 'undefined') {
         $typst.svg({ mainContent }).then((svg: string) => {
           if (contentDivRef.current) {
             console.log(`rendered! SvgElement { len: ${svg.length} }`);
+            //console.log(svg);
             contentDivRef.current.innerHTML = svg;
 
             const svgElem = contentDivRef.current.firstElementChild as SVGElement;
@@ -92,10 +93,10 @@ function App() {
     script.src = 'https://cdn.jsdelivr.net/npm/@myriaddreamin/typst.ts/dist/esm/contrib/all-in-one-lite.bundle.js';
     script.id = 'typst';
     script.onload = initializeTypst;
-    document.head.appendChild(script);
+    document.body.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      document.body.removeChild(script);
     };
   }, []);
 
