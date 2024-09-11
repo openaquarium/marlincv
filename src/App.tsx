@@ -11,18 +11,15 @@ import "./App.css";
 
 import Preview from "./Preview";
 
-import { atom, useAtom } from 'jotai';
+import { useAtom } from "jotai";
 import ResumePage from "./resume/Resume";
 
-
 import { educationData, experienceData, achievementData } from "./resume/Store";
- 
 
 function App() {
-
-  const [education, setEducation] = useAtom(educationData)
-  const [experience, setExperience] = useAtom(experienceData)
-  const [achievement, setAchievements] = useAtom(achievementData)
+  const [education, setEducation] = useAtom(educationData);
+  const [experience, setExperience] = useAtom(experienceData);
+  const [achievement, setAchievements] = useAtom(achievementData);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -42,7 +39,7 @@ function App() {
   };
 
   const handleButtonClick = () => {
-    document.getElementById('fileInput')?.click();
+    document.getElementById("fileInput")?.click();
   };
 
   const handleSaveClick = async () => {
@@ -50,11 +47,11 @@ function App() {
       const opts = {
         types: [
           {
-            description: 'Text Files',
-            accept: { 'text/plain': ['.txt'] },
+            description: "Text Files",
+            accept: { "text/plain": [".txt"] },
           },
         ],
-      };
+      } as SaveFilePickerOptions;
       // Show the file save dialog
       const handle = await window.showSaveFilePicker(opts);
       const writable = await handle.createWritable();
@@ -62,72 +59,78 @@ function App() {
       const resumeData = {
         experience,
         achievement,
-        education
-      }
+        education,
+      };
       await writable.write(JSON.stringify(resumeData));
       // Close the file and write the contents to disk.
       await writable.close();
     } catch (err) {
-      console.error('Error saving file:', err);
+      console.error("Error saving file:", err);
     }
   };
 
-
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-     
-        <div className="h-10 mx-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <h1 className="mr-5 text-xl font-bold">Fast CV</h1>
-            <input
-              type="file"
-              id="fileInput"
-              style={{ display: 'none' }}
-              onChange={handleFileChange}
-            />
-            <Button variant="outline" className="group" onClick={handleButtonClick}>
-              <File className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
-              <span>Open</span>
-            </Button>
-            <Button variant="outline" className="group" onClick={handleSaveClick}>
-              <Save className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
-              <span>Save</span>
-            </Button>
-          </div>
-          <div className="flex items-center gap-3">
-            <Button variant="outline" className="group">
-              <LayoutTemplate className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
-              <span>Template</span>
-            </Button>
-            <Button variant="default" className="group">
-              <Play className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
-              <span>Render</span>
-            </Button>
-            <Button variant="secondary" className="group" onClick={()=> exportPdf}>
-              <Download className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
-              <span>Download PDF</span>
-            </Button>
-            <ModeToggle />
-          </div>
+      <div className="h-10 mx-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <h1 className="mr-5 text-xl font-bold">Fast CV</h1>
+          <input
+            type="file"
+            id="fileInput"
+            className="hidden"
+            onChange={handleFileChange}
+          />
+          <Button
+            variant="outline"
+            className="group"
+            onClick={handleButtonClick}
+          >
+            <File className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+            <span>Open</span>
+          </Button>
+          <Button variant="outline" className="group" onClick={handleSaveClick}>
+            <Save className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+            <span>Save</span>
+          </Button>
         </div>
-        <div className="h-[calc(100vh-5rem)] overflow-auto">
-          <ResizablePanelGroup direction="horizontal">
-            <ResizablePanel >
-              <div className="h-full overflow-auto text-left">
-                <ResumePage />
-              </div>
-            </ResizablePanel>
-            <ResizableHandle withHandle />
-            <ResizablePanel>
-              <div className="h-full overflow-auto text-left">
-                <Preview />
-              </div>
-                
-            </ResizablePanel>
-          </ResizablePanelGroup>
+        <div className="flex items-center gap-3">
+          <Button variant="outline" className="group">
+            <LayoutTemplate className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+            <span>Template</span>
+          </Button>
+          <Button variant="default" className="group">
+            <Play className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+            <span>Render</span>
+          </Button>
+          <Button
+            variant="secondary"
+            className="group"
+            onClick={() => exportPdf}
+          >
+            <Download className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+            <span>Download PDF</span>
+          </Button>
+          <ModeToggle />
         </div>
-        <div className="flex-none w-full h-10 bg-gray-900 text-white">Hello World!</div>
-     
+      </div>
+      <div className="h-[calc(100vh-5rem)] overflow-auto">
+        <ResizablePanelGroup direction="horizontal">
+          <ResizablePanel>
+            <div className="h-full overflow-auto text-left">
+              <ResumePage />
+            </div>
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel>
+            <div className="h-full overflow-auto text-left">
+              <Preview />
+            </div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
+      <div className="flex-none w-full h-10 bg-gray-900 text-white">
+        Hello World!
+      </div>
     </ThemeProvider>
   );
 }
