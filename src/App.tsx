@@ -76,8 +76,8 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="full flex flex-col">
-        <div className="flex-none h-10 mr-1 mb-1 ml-3 flex items-center justify-between">
+     
+        <div className="h-10 mx-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <h1 className="mr-5 text-xl font-bold">Fast CV</h1>
             <input
@@ -111,10 +111,12 @@ function App() {
             <ModeToggle />
           </div>
         </div>
-        <div className="flex-1">
+        <div className="h-[calc(100vh-5rem)] overflow-auto">
           <ResizablePanelGroup direction="horizontal">
-            <ResizablePanel>
+            <ResizablePanel >
+              <div className="h-full overflow-auto text-left">
               <ResumePage />
+              </div>
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel>
@@ -122,8 +124,8 @@ function App() {
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>
-        <div className="flex-none h-10 bg-gray-900"></div>
-      </div>
+        <div className="flex-none w-full h-10 bg-gray-900 text-white">Hello World!</div>
+     
     </ThemeProvider>
   );
 }
