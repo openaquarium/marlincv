@@ -8,7 +8,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
 import { Button } from "./components/ui/button";
 import "./App.css";
-import Sample from "./Pdf";
+
+import Preview from "./Preview";
 
 import { atom, useAtom } from 'jotai';
 import ResumePage from "./resume/Resume";
@@ -45,8 +46,6 @@ function App() {
   };
 
   const handleSaveClick = async () => {
-    
-    
     try {
       const opts = {
         types: [
@@ -104,7 +103,7 @@ function App() {
               <Play className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
               <span>Render</span>
             </Button>
-            <Button variant="secondary" className="group">
+            <Button variant="secondary" className="group" onClick={()=> exportPdf}>
               <Download className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
               <span>Download PDF</span>
             </Button>
@@ -115,12 +114,15 @@ function App() {
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel >
               <div className="h-full overflow-auto text-left">
-              <ResumePage />
+                <ResumePage />
               </div>
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel>
-              <Sample />
+              <div className="h-full overflow-auto text-left">
+                <Preview />
+              </div>
+                
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>
