@@ -36,8 +36,6 @@ const AchievementsSection = () => {
 
     setAchievements(newAchievements)
 
-    console.log(newAchievements)
-
   }
 
   const handleInputChange = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

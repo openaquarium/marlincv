@@ -16,7 +16,6 @@ const EducationSection = () => {
     const [education, setEducation] = useAtom(educationData)
     
     const addEducation = () => {
-    console.log(emptyEducation)
       setEducation([...education,  {...emptyEducation}])
     }
   
