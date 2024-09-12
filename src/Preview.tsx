@@ -1,13 +1,10 @@
 import { useEffect, useRef, useState, forwardRef, useImperativeHandle  } from "react";
-import { Download, File, LayoutTemplate, Play, Save } from "lucide-react";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "./components/mode-toggle";
-import { Button } from "./components/ui/button";
+
 import "./App.css";
 import { Textarea } from "@/components/ui/textarea";
-import { educationData, experienceData, achievementData } from "./resume/Store";
+import { educationData, experienceData, achievementData, templateData, renderTimeData, downloadData } from "./resume/Store";
 import { useAtom } from "jotai";
-import { render } from "react-dom";
+
 
 const renderExperience = (experiences) => {
   let expData = "";
@@ -57,60 +54,73 @@ const renderAchievement = (achievements) => {
 
 
 
-const Preview = forwardRef((props, ref) => {
+const Preview = () => {
   const [education] = useAtom(educationData);
   const [achievement] = useAtom(achievementData);
   const [experience] = useAtom(experienceData);
+  const [template] = useAtom(templateData);
+  const [renderTime] = useAtom(renderTimeData);
+  const [download] = useAtom(downloadData);
 
-  const [inputValue, setInputValue] = useState("Hello, World!");
   const contentDivRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-    let eduData = "";
-    education.forEach((edu) => {
-      const oneData = `#edu(
-        institution: "${edu.institution}",
-        location: "${edu.result}",
-        dates: dates-helper(start-date: "${edu.startDate}", end-date: "${edu.endDate}"),
-      )`;
-      if (edu.selected) eduData += oneData + "\n\n";
-    });
-    console.log(eduData);
-    const template = e.target.value;
-    previewSvg(template.replace(`{{education}}`, eduData));
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setInputValue(e.target.value);
+  //   let eduData = "";
+  //   education.forEach((edu) => {
+  //     const oneData = `#edu(
+  //       institution: "${edu.institution}",
+  //       location: "${edu.result}",
+  //       dates: dates-helper(start-date: "${edu.startDate}", end-date: "${edu.endDate}"),
+  //     )`;
+  //     if (edu.selected) eduData += oneData + "\n\n";
+  //   });
+  //   console.log(eduData);
+  //   const template = e.target.value;
+  //   previewSvg(template.replace(`{{education}}`, eduData));
+  // };
+
+  // useImperativeHandle(ref, () => ({
+  //   renderResume() {
+  //     let changedTemplate = template;
+  //     changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
+  //     changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
+  //     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
+  //     // previewSvg(changedTemplate);
+  //   }, exportPdf() {
+  //     let changedTemplate = template;
+  //     changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
+  //     changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
+  //     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
+  //     // exportPdf(template);
+  //   }
+  // }));
+
+  const renderResume = () => {
+
+    let changedTemplate = template;
+    changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
+    changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
+    changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
+    previewSvg(changedTemplate);
   };
 
+  const exportPDF = () => {
+    let changedTemplate = template;
+    changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
+    changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
+    changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
+    exportPdf(changedTemplate);
+  };
 
-
-  useImperativeHandle(ref, () => ({
-    renderResume() {
-      let template = props.template;
-      template = template.replace(`{{education}}`, renderEducation(education));
-      template = template.replace(`{{achievement}}`, renderAchievement(achievement));
-      template = template.replace(`{{experience}}`, renderExperience(experience));
-      previewSvg(template);
-    }, exportPdf() {
-      let template = props.template;
-      template = template.replace(`{{education}}`, renderEducation(education));
-      template = template.replace(`{{achievement}}`, renderAchievement(achievement));
-      template = template.replace(`{{experience}}`, renderExperience(experience));
-      exportPdf(template);
-    }
-  }));
-  // const renderResume = () => {
-  //   let template = inputValue;
-  //   template = template.replace(`{{education}}`, renderEducation(education));
-  //   template = template.replace(`{{achievement}}`, renderAchievement(achievement));
-  //   template = template.replace(`{{experience}}`, renderExperience(experience));
-  //   previewSvg(template);
-  // };
   
-  // useEffect(() => {
-  //   renderResume();
-    
-  // }, [achievement, education,experience]);
+  useEffect(() => {
+    if( renderTime > 0) renderResume();
+  }, [renderTime]);
+
+  useEffect(() => {
+    if( download > 0) exportPDF();
+  }, [download]);
 
   const previewSvg = (mainContent) => {
     if (typeof $typst !== "undefined") {
@@ -136,7 +146,6 @@ const Preview = forwardRef((props, ref) => {
   };
 
   const exportPdf = (mainContent: string) => {
-    console.log('exportPdf', mainContent);
     if (typeof $typst !== 'undefined') {
       $typst.pdf({ mainContent }).then((pdfData: BlobPart) => {
         const pdfFile = new Blob([pdfData], { type: 'application/pdf' });
@@ -146,6 +155,8 @@ const Preview = forwardRef((props, ref) => {
         link.click();
         URL.revokeObjectURL(link.href);
       });
+    }else{
+      console.log('typst not loaded');
     }
   };
 
@@ -163,6 +174,6 @@ const Preview = forwardRef((props, ref) => {
       <div className="content" ref={contentDivRef}></div>
     </div>
   );
-});
+};
 
 export default Preview;

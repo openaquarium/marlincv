@@ -28,3 +28,6 @@ export const emptyAchievement = {
 export const educationData = atom([{...emptyEducation}])
 export const experienceData = atom([{...emptyExperience}])
 export const achievementData = atom([{...emptyAchievement}])
+export const templateData = atom('')
+export const renderTimeData = atom(0)
+export const downloadData = atom(0)
