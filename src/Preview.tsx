@@ -10,6 +10,9 @@ import { useAtom } from "jotai";
 
 function Preview() {
   const [education] = useAtom(educationData);
+  const [achievement] = useAtom(achievementData);
+  const [experience] = useAtom(experienceData);
+
   const [inputValue, setInputValue] = useState("Hello, World!");
   const contentDivRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -29,7 +32,82 @@ function Preview() {
     const template = e.target.value;
     previewSvg(template.replace(`{{education}}`, eduData));
   };
-  
+  /*
+  export const emptyExperience = {
+    company: '', 
+    position: '', 
+    responsibilities: [{ text: '', selected: true }], 
+    selected: true 
+}
+    */
+   /*
+   == Work Experience
+#work(
+  title: "Subatomic Shepherd and Caffeine Connoisseur",
+  location: "Atomville, CA",
+  company: "Microscopic Circus, Schrodinger's University",
+  dates: dates-helper(start-date: "May 2024", end-date: "Present"),
+)
+- Played God with tiny molecules, making them dance to uncover the secrets of the universe
+- Convinced high-performance computers to work overtime without unions, reducing simulation time by 50%
+- Wowed a room full of nerds with pretty pictures of invisible things and imaginary findings
+*/
+
+  const renderExperience = (experiences) => {
+    let expData = "";
+    experiences.forEach((experience) => {
+      let oneData = `#work(
+          company: "${experience.company}",
+          title: "${experience.position}",
+          dates: dates-helper(start-date: "", end-date: ""),
+        )\n`;
+        for (let i = 0; i < experience.responsibilities.length; i++) {
+          if (experience.responsibilities[i].selected) {
+            oneData += `- ${experience.responsibilities[i].text}\n`
+            ;
+          }
+        }
+      if (experience.selected) expData += oneData + "\n\n";
+    });
+    
+    return expData;
+  }
+
+  const renderEducation = (education) => {
+    let eduData = "";
+    education.forEach((edu) => {
+      const oneData = `#edu(
+          institution: "${edu.institution}",
+          location: "${edu.result}",
+          degree: "${edu.description}",
+          dates: dates-helper(start-date: "${edu.startDate}", end-date: "${edu.endDate}"),
+        )`;
+      if (edu.selected) eduData += oneData + "\n\n";
+    });
+    return eduData;
+  }
+
+  const renderAchievement = (achievement) => {
+    let achievementData = "";
+    achievement.forEach((ach) => {
+      const oneData = `#extracurriculars(
+          activity: "${ach.competition}",
+          dates: dates-helper(start-date: "${ach.date}", end-date: ""),
+        )`;
+      if (ach.selected) achievementData += oneData + "\n\n";
+    });
+    return achievementData;
+  }
+
+  useEffect(() => {
+    
+    let template = inputValue;
+    template = template.replace(`{{education}}`, renderEducation(education));
+    template = template.replace(`{{achievement}}`, renderAchievement(achievement));
+    template = template.replace(`{{experience}}`, renderExperience(experience));
+    previewSvg(template);
+  }, [achievement, education,experience]);
+
   const previewSvg = (mainContent) => {
     if (typeof $typst !== "undefined") {
       $typst.svg({ mainContent }).then((svg: string) => {

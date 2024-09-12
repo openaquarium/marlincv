@@ -26,5 +26,5 @@ export const emptyAchievement = {
 
 
 export const educationData = atom([{...emptyEducation}])
-export  const experienceData = atom([{...emptyExperience}])
-export  const achievementData = atom([{...emptyAchievement}])
+export const experienceData = atom([{...emptyExperience}])
+export const achievementData = atom([{...emptyAchievement}])
