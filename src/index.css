@@ -137,3 +137,7 @@ button:focus-visible {
 .full {
   @apply w-full h-full;
 }
+
+.content > svg {
+  @apply w-full;
+}
