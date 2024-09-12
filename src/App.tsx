@@ -3,6 +3,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { useEffect, useRef, useState } from "react";
 import { Download, File, LayoutTemplate, Play, Save } from "lucide-react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
@@ -20,6 +21,20 @@ function App() {
   const [education, setEducation] = useAtom(educationData);
   const [experience, setExperience] = useAtom(experienceData);
   const [achievement, setAchievements] = useAtom(achievementData);
+  const [template, setTemplate] = useState("");
+
+  const childRef = useRef(null);
+
+  
+
+   useEffect(() => {
+    fetch("/templates/stephen.typ")
+      .then((response) => response.text())
+      .then((text) => {
+        setTemplate(text);
+        console.log(text)
+      });
+  }, []);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -69,6 +84,20 @@ function App() {
     }
   };
 
+
+
+  const handleRenderClick = () => {
+    if (childRef.current) {
+      childRef.current.renderResume(); // Call the child function
+    }
+  };
+
+  const handleExportClick = () => {
+    if (childRef.current) {
+      childRef.current.exportPdf(); // Call the child function
+    }
+  }
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="h-10 mx-3 flex items-center justify-between">
@@ -98,14 +127,14 @@ function App() {
             <LayoutTemplate className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
             <span>Template</span>
           </Button>
-          <Button variant="default" className="group">
+          <Button variant="default" className="group" onClick={handleRenderClick}>
             <Play className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
             <span>Render</span>
           </Button>
           <Button
             variant="secondary"
             className="group"
-            onClick={() => exportPdf}
+            onClick={handleExportClick}
           >
             <Download className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
             <span>Download PDF</span>
@@ -123,7 +152,7 @@ function App() {
           <ResizableHandle withHandle />
           <ResizablePanel>
             <div className="h-full overflow-auto text-left">
-              <Preview />
+              <Preview   ref={childRef} template={template}  />
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>
