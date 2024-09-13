@@ -17,7 +17,7 @@ There are countless resume builder present in the web. Majority of them are paid
 - Reorder sections with easy to use drag and drop
 
 ## How to use
-Go to [Marlin CV](). Open a file that you have saved earlier or start filling up the sections. Use the render button to render the resume. 
+Go to [Marlin CV](https://buet-beecrypt.github.io/marlincv/). Open a file that you have saved earlier or start filling up the sections. Use the render button to render the resume. 
 
 When you are done save it into a local file. To export it as pdf use the `Download as PDF` button. This will load into a new page. You have **Print** the page to export it into pdf.
 
@@ -34,4 +34,6 @@ When you are done save it into a local file. To export it as pdf use the `Downlo
 - Fix the download feature
 - Custom sections
 - Add responsiveness
+- Add mor templates
+- Better CSS Support
 
