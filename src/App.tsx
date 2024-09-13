@@ -18,7 +18,7 @@ import Navbar from "./Navbar";
 function App() {
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <Navbar  />
       <div className="h-[calc(100vh-5rem)] overflow-hidden">
         <ResizablePanelGroup direction="horizontal">
@@ -36,7 +36,7 @@ function App() {
         </ResizablePanelGroup>
       </div>
       <div className="flex-none w-full h-10 bg-gray-900 text-white">
-        Hello World!
+        
       </div>
     </ThemeProvider>
   );
