@@ -1,56 +1,37 @@
 # Marlin CV
 
-Fasted CV maker ever!
+![Marlin CV](assets/marlincv-ui.png)
 
-## React + TypeScript + Vite
+A simple resume builder with high ATS parse score
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Why this is made
+Every job posting has different criteria and requirements. You need to tailor your resume based on those requirements. You need to change your projects, achievements, skills based on those. Also the job responsibilites need to be changed too! Example, you might have different CV for a job posting where Golang is required vs another where the position is based on Spring Boot. In this competetive market we apply for about 30 jobs per week! We needed some fast and easy way to change our resume. Thus Marlin CV was made.   
 
-Currently, two official plugins are available:
+There are countless resume builder present in the web. Majority of them are paid. That still leaves us with some good open source and free builder. They are great but doesn't fullfil all the requirements.
+## Functionalities
+- No sign in required
+- No server! Everything happens in your browser locally
+- Load and save data locally
+- High ATS parse score
+- Select/ Deselect sections based on your requirement
+- Reorder sections with easy to use drag and drop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to use
+Go to [Marlin CV](). Open a file that you have saved earlier or start filling up the sections. Use the render button to render the resume. 
 
-## Expanding the ESLint configuration
+When you are done save it into a local file. To export it as pdf use the `Download as PDF` button. This will load into a new page. You have **Print** the page to export it into pdf.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Known issues
+- No option to add custom sections
+- All the sections in profile are required. TODO: add options to make fields optional
+- All the sections are required too. TODO: add options to remove sections
+- Saving into file doesn't work for some of the browsers. Use updated chrome. TODO: make this feature browser compatible
+- Download button doesn't automatically convert it into pdf. TODO: Fix the download feature
 
-- Configure the top-level `parserOptions` property like this:
+## Future updates we have in mind
+- Add keyboard shortcuts for all buttons
+- Adding new fields upon enter
+- Fix the download feature
+- Custom sections
+- Add responsiveness
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-### Credits
-- [project name] [Hasan Masum](https://github.com/hmasum52)
