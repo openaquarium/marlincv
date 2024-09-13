@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "re
 
 import "./App.css";
 import { Textarea } from "@/components/ui/textarea";
-import { profileData, educationData, experienceData, achievementData, templateData, renderTimeData, downloadData } from "./resume/Store";
+import { profileData, educationData, experienceData, achievementData, templateData, renderTimeData, downloadData, projectData, skillData } from "./resume/Store";
 import { useAtom } from "jotai";
 
 /*
@@ -80,17 +80,75 @@ const renderEducation = (education) => {
 }
 
 const renderAchievement = (achievements) => {
-  let achievementData = "";
+  let expData = "";
   achievements.forEach((achievement) => {
-    const oneData = `#extracurriculars(
-        activity: "${achievement.competition}",
-        dates: dates-helper(start-date: "${achievement.date}", end-date: ""),
-      )`;
-    if (achievement.selected) achievementData += oneData + "\n\n";
+    console.log(achievement);
+    if (!achievement.selected) return;
+    
+    let oneData = `#work(
+        title: "${achievement.competition}",
+        dates: "${achievement.location}",
+        location: "${achievement.date}",
+        company: "${achievement.position}",
+      )\n`;
+    for (const responsibility of achievement.responsibilities) {
+      if (responsibility.selected) {
+        oneData += `- ${responsibility.text}\n`;
+      }
+    }
+    expData += oneData + "\n\n";
   });
-  return achievementData;
+
+  return expData;
 }
 
+/*
+#project(
+  role: "Maintainer",
+  name: "Hyperschedule",
+  dates: dates-helper(start-date: "Nov 2023", end-date: "Present"),
+  url: "hyperschedule.io",
+)
+  */
+const renderProject = (projects) => {
+  let projectData = "";
+  projects.forEach((project) => {
+    
+    if (!project.selected) return;
+    let duration = `dates-helper(start-date: "${project.startDate}", end-date: "${project.endDate}")`;
+    if (project.isCurrent) duration = `dates-helper(start-date: "${project.startDate}", end-date: "Present")`;
+    
+    let oneData = `#project(
+        role: "${project.name}",
+        name: "[${project.stack}]",
+        dates: ${duration},
+        url: "${project.link}",
+      )`;
+    for (const responsibility of project.responsibilities) {
+      if (responsibility.selected) {
+        oneData += `- ${responsibility.text}\n`;
+      }
+    }
+    projectData += oneData + "\n\n";
+  });
+  return projectData;
+}
+/*
+== Skills and Awards
+- *Programming Languages*: JavaScript, Python, C/C++, HTML/CSS, Java, Bash, R, Flutter, Dart
+- *Technologies*: React, Astro, Svelte, Tailwind CSS, Git, UNIX, Docker, Caddy, NGINX, Google Cloud Platform
+- *Awards*: 1st CorCTF 2024 (\$1337), 3rd PicoCTF 2023 (\$1000), 1st BCACTF 2023 (\$500)
+- *Interests*: Classical Literature, Creative Writing, Tetris
+*/
+
+const renderSkill = (skills) => {
+  let skillData = "";
+  skills.forEach((skill) => {
+    const oneData = `- *${skill.title}*: ${skill.skills.map((s) => s.selected? s.name:"").join(", ")}`;
+    if (skill.selected) skillData += oneData + "\n";
+  });
+  return skillData;
+}
 
 
 const Preview = () => {
@@ -98,6 +156,8 @@ const Preview = () => {
   const [education] = useAtom(educationData);
   const [achievement] = useAtom(achievementData);
   const [experience] = useAtom(experienceData);
+  const [project] = useAtom(projectData);
+  const [skill] = useAtom(skillData);
   const [template] = useAtom(templateData);
   const [renderTime] = useAtom(renderTimeData);
   const [download] = useAtom(downloadData);
@@ -143,7 +203,9 @@ const Preview = () => {
     changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
     changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
-   
+    changedTemplate = changedTemplate.replace(`{{project}}`, renderProject(project));
+    changedTemplate = changedTemplate.replace(`{{skill}}`, renderSkill(skill));
+    
     previewSvg(changedTemplate);
   };
 
@@ -153,7 +215,8 @@ const Preview = () => {
     changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
     changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
-   
+    changedTemplate = changedTemplate.replace(`{{project}}`, renderProject(project));
+    changedTemplate = changedTemplate.replace(`{{skill}}`, renderSkill(skill));
     exportPdf(changedTemplate);
   };
 

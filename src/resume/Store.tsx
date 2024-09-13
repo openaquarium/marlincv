@@ -50,15 +50,41 @@ export const getEmptyAchievement = () => {
         competition: '', 
         position: '', 
         date: '',
+        responsibilities: [{ id: Date.now().toString(), text: '', selected: true }], 
         selected: true 
     }
 }
 
 
+export const getEmptyProject = () => {
+    return {
+        id: Date.now().toString(),
+        name: '',
+        link: '',
+        stack: '',
+        startDate: '',
+        endDate: '',
+        isCurrent: false,
+        responsibilities: [{ id: Date.now().toString(), text: '', selected: true }], 
+        selected: true
+    }
+}
+
+export const getEmptySkill = () => {
+    return {
+        id: Date.now().toString(),
+        title: '',
+        skills: [{ id: Date.now().toString(), name: '', selected: true }],
+        selected: true
+    }
+}
+
 export const educationData = atom([getEmptyEducation()])
 export const experienceData = atom([getEmptyExperience()])
 export const achievementData = atom([getEmptyAchievement()])
+export const projectData = atom([getEmptyProject()])
 export const profileData = atom(getEmptyProfile())
+export const skillData = atom([getEmptySkill()])
 export const templateData = atom('')
 export const renderTimeData = atom(0)
 export const downloadData = atom(0)

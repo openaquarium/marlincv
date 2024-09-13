@@ -33,5 +33,13 @@
 == Work Experience
 {{experience}}
 
+== Projects
+{{project}}
+
 == Extracurricular Activities
 {{achievement}}
+
+== Skills
+{{skill}}
+
+

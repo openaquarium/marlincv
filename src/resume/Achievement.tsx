@@ -18,6 +18,7 @@ import { UpDownButton } from '@/components/UpDownButton'
 
 // Achievements Section Component
 const AchievementsSection = () => {
+  
   const [achievements, setAchievements] = useAtom(achievementData)
   const addAchievement = () => {
     setAchievements([...achievements, getEmptyAchievement()])
@@ -72,6 +73,7 @@ const AchievementsSection = () => {
                       >
                         <CardContent className="space-y-2">
                           <div className="flex items-center justify-between">
+                            <div className="flex items-center justify-between">
                             <div {...provided.dragHandleProps}>
                               <GripVertical className="text-gray-400" />
                             </div>
@@ -83,6 +85,7 @@ const AchievementsSection = () => {
                                 id={`achievement-select-${index}`}
                               />
                               <Label htmlFor={`exp-select-${index}`}>Select/Deselect</Label>
+                            </div>
                             </div>
                             <Button variant="destructive" size="icon" onClick={() => deleteAchievement(index)}>
                               <Trash2 className="h-4 w-4" />

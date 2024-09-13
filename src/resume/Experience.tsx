@@ -10,6 +10,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { experienceData, getEmptyExperience } from './Store'
 import { useAtom } from 'jotai'
+import { Textarea } from '@/components/ui/textarea'
 
 // Types
 type Responsibility = {
@@ -69,7 +70,7 @@ const ResponsibilityItem = ({ expIndex, resp, index, updateResponsibility, delet
             onCheckedChange={(checked) => updateResponsibility(expIndex, index, { ...resp, selected: checked })}
             id={`resp-select-${expIndex}-${index}`}
           />
-          <Input
+          <Textarea
             placeholder="Responsibility"
             value={resp.text}
             onChange={(e) => updateResponsibility(expIndex, index, { ...resp, text: e.target.value })}
@@ -85,7 +86,7 @@ const ResponsibilityItem = ({ expIndex, resp, index, updateResponsibility, delet
 
 // Experience Entry Component
 const ExperienceEntry = ({ exp, index, updateExperience, deleteExperience, addResponsibility, updateResponsibility, deleteResponsibility }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(true)
 
   return (
     <Draggable draggableId={exp.id} index={index}>

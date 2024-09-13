@@ -87,7 +87,7 @@ const ResponsibilityItem = ({ eduIndex, resp, index, updateResponsibility, delet
 
 // Education Entry Component
 const EducationEntry = ({ edu, index, updateEducation, deleteEducation, addResponsibility, updateResponsibility, deleteResponsibility }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(true)
 
   return (
     <Draggable draggableId={edu.id} index={index}>

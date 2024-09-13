@@ -1,10 +1,13 @@
 'use client'
 
-import AchievementsSection from './Achievement'
+
+import AchievementSection2 from './Achievemen2'
 import EducationSection from './Education'
 import EducationSection2 from './EducationNew'
 import ExperienceSection from './Experience'
 import ProfileSection from './Profile'
+import ProjectSection from './Project'
+import SkillSection from './Skill'
 
 
 export default function ResumePage() {
@@ -17,7 +20,10 @@ export default function ResumePage() {
       <EducationSection2 />
       <ExperienceSection />
       {/* <ExperienceSection /> */}
-      <AchievementsSection />
+      <ProjectSection />
+      <AchievementSection2 />
+      <SkillSection />
+
       
     </div>
   )

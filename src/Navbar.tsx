@@ -4,14 +4,17 @@ import { ModeToggle } from "./components/mode-toggle";
 import { Button } from "./components/ui/button";
 import { useAtom } from "jotai";
 
-import { educationData, experienceData, achievementData, templateData, renderTimeData, downloadData } from "./resume/Store";
+import { educationData, experienceData, achievementData, templateData, renderTimeData, downloadData, profileData, projectData, skillData } from "./resume/Store";
 
 
 export default function Navbar() {
   
   const [education, setEducation] = useAtom(educationData);
   const [experience, setExperience] = useAtom(experienceData);
-  const [achievement, setAchievements] = useAtom(achievementData);
+  const [achievement, setAchievements] = useAtom(achievementData); 
+  const [profile, setProfile] = useAtom(profileData);
+  const [project, setProject] = useAtom(projectData);
+  const [skill, setSkill] = useAtom(skillData);
   const [template, setTemplate] = useAtom(templateData);
   const [renderTime, setRenderTime] = useAtom(renderTimeData);
   const [download, setDownload] = useAtom(downloadData);
@@ -36,9 +39,12 @@ export default function Navbar() {
         const text = e.target?.result as string;
 
         const resumeData = JSON.parse(text);
+        setProfile(resumeData.profile);
         setEducation(resumeData.education);
         setExperience(resumeData.experience);
         setAchievements(resumeData.achievement);
+        setProject(resumeData.project);
+        setSkill(resumeData.skill);
         console.log(resumeData.education);
       };
       reader.readAsText(file);
@@ -64,9 +70,12 @@ export default function Navbar() {
       const writable = await handle.createWritable();
       // Write the content to the file
       const resumeData = {
+        profile,
         experience,
         achievement,
         education,
+        project,
+        skill,
       };
       await writable.write(JSON.stringify(resumeData));
       // Close the file and write the contents to disk.

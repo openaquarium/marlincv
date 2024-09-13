@@ -23,7 +23,7 @@ type Profile = {
 }
 export default function ProfileSection() {
   const [profile, setProfile] = useAtom(profileData)
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(true)
 
   const updateProfile = (field: keyof Profile, value: string) => {
     setProfile({ ...profile, [field]: value })
