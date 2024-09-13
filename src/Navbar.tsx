@@ -98,7 +98,7 @@ export default function Navbar() {
   return (
     <div className="h-10 mx-3 flex items-center justify-between">
     <div className="flex items-center gap-3">
-      <h1 className="mr-5 text-xl font-bold">Fast CV</h1>
+      <h1 className="mr-5 text-xl font-bold">Marlin CV</h1>
       <input
         type="file"
         id="fileInput"
