@@ -24,7 +24,7 @@ export default function Navbar() {
   
 
    useEffect(() => {
-    fetch("/templates/stephen.typ")
+    fetch("./templates/stephen.typ")
       .then((response) => response.text())
       .then((text) => {
         setTemplate(text);
