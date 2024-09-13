@@ -1,6 +1,6 @@
-# FastCV
+# Marlin CV
 
-Generate a CV in seconds with FastCV.
+Fasted CV maker ever!
 
 ## React + TypeScript + Vite
 
@@ -52,3 +52,5 @@ export default tseslint.config({
   },
 })
 ```
+### Credits
+- [project name] [Hasan Masum](https://github.com/hmasum52)
