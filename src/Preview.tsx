@@ -1,41 +1,80 @@
-import { useEffect, useRef, useState, forwardRef, useImperativeHandle  } from "react";
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 
 import "./App.css";
 import { Textarea } from "@/components/ui/textarea";
-import { educationData, experienceData, achievementData, templateData, renderTimeData, downloadData } from "./resume/Store";
+import { profileData, educationData, experienceData, achievementData, templateData, renderTimeData, downloadData } from "./resume/Store";
 import { useAtom } from "jotai";
 
+/*
+#let name = "Mohammad Tamimul Ehsan"
+#let location = "Dhaka, Bangladesh"
+#let email = "**@gmail.com"
+#let github = "github.com/tamimehsan"
+#let linkedin = "linkedin.com/in/tamimehsan"
+#let phone = "+1 (xxx) xxx-xxxx"
+#let personal-site = "tamimehsan.github.io"
 
+*/
+
+const renderProfile = (profile) => {
+  let profileData = "";
+  profileData = `
+#let name = "${profile.name}"
+#let location = "${profile.location}"
+#let email = "${profile.email}"
+#let github = "${profile.github}"
+#let linkedin = "${profile.linkedin}"
+#let phone = "${profile.phone}"
+#let personal-site = "${profile.portfolio}"
+      `;
+  return profileData;
+}
+
+/*
+* #work(company: "", dates: "", location: "", title: "")
+*/
 const renderExperience = (experiences) => {
   let expData = "";
   experiences.forEach((experience) => {
+    if (!experience.selected) return;
+    let duration = `dates-helper(start-date: "${experience.startDate}", end-date: "${experience.endDate}")`;
+    if (experience.isCurrent) duration = `dates-helper(start-date: "${experience.startDate}", end-date: "Present")`;
     let oneData = `#work(
-        company: "${experience.company}",
-        title: "${experience.position}",
-        dates: dates-helper(start-date: "", end-date: ""),
+        title: "${experience.company}",
+        dates: "${experience.location}",
+        location: ${duration},
+        company: "${experience.position}",
       )\n`;
-      for (let i = 0; i < experience.responsibilities.length; i++) {
-        if (experience.responsibilities[i].selected) {
-          oneData += `- ${experience.responsibilities[i].text}\n`
-          ;
-        }
+    for (const responsibility of experience.responsibilities) {
+      if (responsibility.selected) {
+        oneData += `- ${responsibility.text}\n`;
       }
-    if (experience.selected) expData += oneData + "\n\n";
+    }
+    expData += oneData + "\n\n";
   });
-  
+
   return expData;
 }
+
 
 const renderEducation = (education) => {
   let eduData = "";
   education.forEach((edu) => {
-    const oneData = `#edu(
+    if (!edu.selected) return;
+    let duration = `dates-helper(start-date: "${edu.startDate}", end-date: "${edu.endDate}")`;
+    if (edu.isCurrent) duration = `dates-helper(start-date: "${edu.startDate}", end-date: "Present")`;
+    let oneData = `#edu(
         institution: "${edu.institution}",
-        location: "${edu.result}",
-        degree: "${edu.description}",
-        dates: dates-helper(start-date: "${edu.startDate}", end-date: "${edu.endDate}"),
-      )`;
-    if (edu.selected) eduData += oneData + "\n\n";
+        location: "${edu.location}",
+        degree: "${edu.degree} - Result: ${edu.result}",
+        dates: ${duration},
+      )\n`;
+    for (const responsibility of edu.responsibilities) {
+      if (responsibility.selected) {
+        oneData += `- ${responsibility.text}\n`;
+      }
+    }
+    eduData += oneData + "\n\n";
   });
   return eduData;
 }
@@ -55,6 +94,7 @@ const renderAchievement = (achievements) => {
 
 
 const Preview = () => {
+  const [profile] = useAtom(profileData);
   const [education] = useAtom(educationData);
   const [achievement] = useAtom(achievementData);
   const [experience] = useAtom(experienceData);
@@ -99,27 +139,31 @@ const Preview = () => {
   const renderResume = () => {
 
     let changedTemplate = template;
+    changedTemplate = changedTemplate.replace(`{{profile}}`, renderProfile(profile));
     changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
     changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
+   
     previewSvg(changedTemplate);
   };
 
   const exportPDF = () => {
     let changedTemplate = template;
+    changedTemplate = changedTemplate.replace(`{{profile}}`, renderProfile(profile));
     changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
     changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
+   
     exportPdf(changedTemplate);
   };
 
-  
+
   useEffect(() => {
-    if( renderTime > 0) renderResume();
+    if (renderTime > 0) renderResume();
   }, [renderTime]);
 
   useEffect(() => {
-    if( download > 0) exportPDF();
+    if (download > 0) exportPDF();
   }, [download]);
 
   const previewSvg = (mainContent) => {
@@ -155,7 +199,7 @@ const Preview = () => {
         link.click();
         URL.revokeObjectURL(link.href);
       });
-    }else{
+    } else {
       console.log('typst not loaded');
     }
   };

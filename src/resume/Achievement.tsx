@@ -9,8 +9,9 @@ import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
-import { achievementData, emptyAchievement } from "./Store";
+import { achievementData, getEmptyAchievement } from "./Store";
 import { useAtom } from 'jotai'
+import { UpDownButton } from '@/components/UpDownButton'
 
 
 
@@ -19,7 +20,7 @@ import { useAtom } from 'jotai'
 const AchievementsSection = () => {
   const [achievements, setAchievements] = useAtom(achievementData)
   const addAchievement = () => {
-    setAchievements([...achievements, { ...emptyAchievement }])
+    setAchievements([...achievements, getEmptyAchievement()])
   }
 
   const deleteAchievement = (index) => {
@@ -44,7 +45,14 @@ const AchievementsSection = () => {
     newAchievements[index][name] = value
     setAchievements(newAchievements)
   }
-
+  const handleMove = (index: number, direction: string) => {
+    if (index === 0 && direction === 'up') return
+    if (index === achievements.length - 1 && direction === 'down') return
+    const newAchievements = [...achievements]
+    const movedAchievement = newAchievements.splice(index, 1)[0]
+    newAchievements.splice(direction === 'up' ? index - 1 : index + 1, 0, movedAchievement)
+    setAchievements(newAchievements)
+  }
   return (
     <Card>
       <CardHeader>
@@ -67,6 +75,7 @@ const AchievementsSection = () => {
                             <div {...provided.dragHandleProps}>
                               <GripVertical className="text-gray-400" />
                             </div>
+                            {/* <UpDownButton index={index} onClick={handleMove}   /> */}
                             <div className="flex items-center space-x-2">
                               <Checkbox
                                 checked={achievement.selected}

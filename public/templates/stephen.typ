@@ -1,13 +1,7 @@
 #import "@preview/basic-resume:0.1.0": *
 
 // Put your personal information here, replacing mine
-#let name = "Mohammad Tamimul Ehsan"
-#let location = "Dhaka, Bangladesh"
-#let email = "**@gmail.com"
-#let github = "github.com/tamimehsan"
-#let linkedin = "linkedin.com/in/tamimehsan"
-#let phone = "+1 (xxx) xxx-xxxx"
-#let personal-site = "tamimehsan.github.io"
+{{profile}}
 
 #show: resume.with(
   author: name,
