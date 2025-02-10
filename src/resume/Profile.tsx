@@ -10,10 +10,13 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { useAtom } from 'jotai'
 import {profileData} from './Store';
+import { Textarea } from '@/components/ui/textarea'
 
 
 type Profile = {
   name: string
+  describeYourselfForAi: string
+  jobDescription: string
   phone: string
   location: string
   email: string
@@ -21,6 +24,7 @@ type Profile = {
   github: string
   linkedin: string
 }
+
 export default function ProfileSection() {
   const [profile, setProfile] = useAtom(profileData)
   const [isCollapsed, setIsCollapsed] = useState(true)
@@ -29,13 +33,13 @@ export default function ProfileSection() {
     setProfile({ ...profile, [field]: value })
   }
 
-  
- 
+
+
 
   return (
     <Card className="w-full max-w-2xl mx-auto">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle>Profile</CardTitle>
+        <CardTitle>Profile & Job Description</CardTitle>
         <Button
           variant="ghost"
           size="sm"
@@ -51,7 +55,20 @@ export default function ProfileSection() {
         </Button>
       </CardHeader>
       <CardContent>
-        <div className="space-y-2">
+
+        <div className="space-y-2 mt-4">
+              <Label htmlFor="name">Job Description</Label>
+              <Textarea
+                id="jobDescription"
+                className='h-32'
+                value={profile.jobDescription}
+                onChange={(e) => updateProfile('jobDescription', e.target.value)}
+                placeholder="Your Job Description"
+              />
+        </div>
+        {!isCollapsed && (
+          <>
+          <div className="space-y-2 mt-4">
           <Label htmlFor="name">Name</Label>
           <Input
             id="name"
@@ -59,9 +76,20 @@ export default function ProfileSection() {
             onChange={(e) => updateProfile('name', e.target.value)}
             placeholder="Your Name"
           />
+
+
         </div>
-        {!isCollapsed && (
-          <>
+
+            <div className="space-y-2">
+              <Label htmlFor="name">Describe Yourself For AI</Label>
+              <Textarea
+              className='h-32'
+                id="describeYourselfForAi"
+                value={profile.describeYourselfForAi}
+                onChange={(e) => updateProfile('describeYourselfForAi', e.target.value)}
+                placeholder="Your Profile Description"
+              />
+            </div>
             <div className="space-y-2 mt-4">
               <Label htmlFor="phone">Phone Number</Label>
               <Input
@@ -120,7 +148,7 @@ export default function ProfileSection() {
                 placeholder="Your Linked URL"
               />
             </div>
-            
+
           </>
         )}
       </CardContent>

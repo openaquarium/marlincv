@@ -84,7 +84,7 @@ const renderAchievement = (achievements) => {
   achievements.forEach((achievement) => {
     console.log(achievement);
     if (!achievement.selected) return;
-    
+
     let oneData = `#work(
         title: "${achievement.competition}",
         dates: "${achievement.location}",
@@ -113,11 +113,11 @@ const renderAchievement = (achievements) => {
 const renderProject = (projects) => {
   let projectData = "";
   projects.forEach((project) => {
-    
+
     if (!project.selected) return;
     let duration = `dates-helper(start-date: "${project.startDate}", end-date: "${project.endDate}")`;
     if (project.isCurrent) duration = `dates-helper(start-date: "${project.startDate}", end-date: "Present")`;
-    
+
     let oneData = `#project(
         role: "${project.name}",
         name: "[${project.stack}]",
@@ -164,37 +164,6 @@ const Preview = () => {
 
   const contentDivRef = useRef<HTMLDivElement>(null);
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setInputValue(e.target.value);
-  //   let eduData = "";
-  //   education.forEach((edu) => {
-  //     const oneData = `#edu(
-  //       institution: "${edu.institution}",
-  //       location: "${edu.result}",
-  //       dates: dates-helper(start-date: "${edu.startDate}", end-date: "${edu.endDate}"),
-  //     )`;
-  //     if (edu.selected) eduData += oneData + "\n\n";
-  //   });
-  //   console.log(eduData);
-  //   const template = e.target.value;
-  //   previewSvg(template.replace(`{{education}}`, eduData));
-  // };
-
-  // useImperativeHandle(ref, () => ({
-  //   renderResume() {
-  //     let changedTemplate = template;
-  //     changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
-  //     changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
-  //     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
-  //     // previewSvg(changedTemplate);
-  //   }, exportPdf() {
-  //     let changedTemplate = template;
-  //     changedTemplate = changedTemplate.replace(`{{education}}`, renderEducation(education));
-  //     changedTemplate = changedTemplate.replace(`{{achievement}}`, renderAchievement(achievement));
-  //     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
-  //     // exportPdf(template);
-  //   }
-  // }));
 
   const renderResume = () => {
 
@@ -205,7 +174,7 @@ const Preview = () => {
     changedTemplate = changedTemplate.replace(`{{experience}}`, renderExperience(experience));
     changedTemplate = changedTemplate.replace(`{{project}}`, renderProject(project));
     changedTemplate = changedTemplate.replace(`{{skill}}`, renderSkill(skill));
-    
+
     previewSvg(changedTemplate);
   };
 
@@ -269,15 +238,7 @@ const Preview = () => {
 
   return (
     <div>
-      {/* <Textarea
-        height="100px"
-        placeholder="Type your message here."
-        className="full"
-        id="input"
-        ref={inputRef}
-        value={inputValue}
-        onChange={(e) => handleChange(e)}
-      /> */}
+
       <div className="content" ref={contentDivRef}></div>
     </div>
   );
