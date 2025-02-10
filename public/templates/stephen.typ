@@ -36,10 +36,8 @@
 == Projects
 {{project}}
 
-== Extracurricular Activities
+== Certifications
 {{achievement}}
 
 == Skills
 {{skill}}
-
-

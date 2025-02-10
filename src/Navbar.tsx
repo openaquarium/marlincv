@@ -8,10 +8,10 @@ import { educationData, experienceData, achievementData, templateData, renderTim
 
 
 export default function Navbar() {
-  
+
   const [education, setEducation] = useAtom(educationData);
   const [experience, setExperience] = useAtom(experienceData);
-  const [achievement, setAchievements] = useAtom(achievementData); 
+  const [achievement, setAchievements] = useAtom(achievementData);
   const [profile, setProfile] = useAtom(profileData);
   const [project, setProject] = useAtom(projectData);
   const [skill, setSkill] = useAtom(skillData);
@@ -21,7 +21,7 @@ export default function Navbar() {
 
   const childRef = useRef(null);
 
-  
+
 
    useEffect(() => {
     fetch("./templates/stephen.typ")
@@ -29,7 +29,26 @@ export default function Navbar() {
       .then((text) => {
         setTemplate(text);
       });
+
+      loadDataFromLocalStorage();
   }, []);
+
+
+  useEffect(() => {
+    saveToLocalStorage(
+
+      {
+        profile,
+        experience,
+        achievement,
+        education,
+        project,
+        skill,
+      }
+            )
+  }, [profile, experience,achievement,education,project,skill]);
+
+
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -46,8 +65,36 @@ export default function Navbar() {
         setProject(resumeData.project);
         setSkill(resumeData.skill);
         console.log(resumeData.education);
+
+        saveToLocalStorage(resumeData);
       };
+
       reader.readAsText(file);
+
+
+    }
+  };
+
+  const loadDataFromLocalStorage = () => {
+    try {
+      // Get JSON string from localStorage
+      const resumeDataString = localStorage.getItem('resumeData');
+
+      if (resumeDataString) {
+        // Parse JSON string to object
+        const resumeData = JSON.parse(resumeDataString);
+
+        // Set all the states with the data
+        setProfile(resumeData.profile);
+        setEducation(resumeData.education);
+        setExperience(resumeData.experience);
+        setAchievements(resumeData.achievement);
+        setProject(resumeData.project);
+        setSkill(resumeData.skill);
+        console.log(resumeData.education);
+      }
+    } catch (error) {
+      console.error('Error loading data from localStorage:', error);
     }
   };
 
@@ -85,6 +132,20 @@ export default function Navbar() {
     }
   };
 
+  function saveToLocalStorage(resumeData) {
+    try {
+
+
+        const serializedData = JSON.stringify(resumeData);
+        localStorage.setItem("resumeData", serializedData);
+        console.log('Data successfully saved');
+        return true;
+    } catch (error) {
+        console.error('Error saving data:', error);
+        return false;
+    }
+}
+
 
 
   const handleRenderClick = () => {
@@ -113,6 +174,7 @@ export default function Navbar() {
         <File className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
         <span>Open</span>
       </Button>
+
       <Button variant="outline" className="group" onClick={handleSaveClick}>
         <Save className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
         <span>Save</span>
