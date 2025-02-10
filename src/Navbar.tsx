@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
-import { Download, File, LayoutTemplate, Play, Save } from "lucide-react";
+import { useEffect, useRef,useState } from "react";
+import { Download, File, LayoutTemplate, Play, Save,Sparkles } from "lucide-react";
 import { ModeToggle } from "./components/mode-toggle";
 import { Button } from "./components/ui/button";
 import { useAtom } from "jotai";
+import axios from 'axios';
 
 import { educationData, experienceData, achievementData, templateData, renderTimeData, downloadData, profileData, projectData, skillData } from "./resume/Store";
 
@@ -18,6 +19,11 @@ export default function Navbar() {
   const [template, setTemplate] = useAtom(templateData);
   const [renderTime, setRenderTime] = useAtom(renderTimeData);
   const [download, setDownload] = useAtom(downloadData);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+
 
   const childRef = useRef(null);
 
@@ -31,10 +37,14 @@ export default function Navbar() {
       });
 
       loadDataFromLocalStorage();
+
+
+
   }, []);
 
 
   useEffect(() => {
+    handleRenderClick();
     saveToLocalStorage(
 
       {
@@ -46,6 +56,8 @@ export default function Navbar() {
         skill,
       }
             )
+
+
   }, [profile, experience,achievement,education,project,skill]);
 
 
@@ -92,6 +104,13 @@ export default function Navbar() {
         setProject(resumeData.project);
         setSkill(resumeData.skill);
         console.log(resumeData.education);
+        //sleep for 0.1 second the handleRenderClick
+        setTimeout(() => {
+          console.log("handleRender")
+          handleRenderClick();
+        }, 1000);
+
+
       }
     } catch (error) {
       console.error('Error loading data from localStorage:', error);
@@ -146,6 +165,46 @@ export default function Navbar() {
     }
 }
 
+  const generateAIResume = async () => {
+    try {
+      setLoading(true);
+
+      // Get credentials from localStorage
+      const storedCredentials = localStorage.getItem('resumeData');
+      const resumeData = storedCredentials ? JSON.parse(storedCredentials) : {};
+
+      // Create axios instance with base URL from Vite env
+      const axiosInstance = axios.create({
+        baseURL: import.meta.env.VITE_API_URL,
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      // Make POST request
+      const response = await axiosInstance.post('/generateResume', {
+        ...resumeData,
+      });
+
+      resumeData.experience=response.data.experience;
+      resumeData.project=response.data.project;
+      resumeData.skill=response.data.skill;
+
+      // Store the response data in localStorage
+      localStorage.setItem('resumeData', JSON.stringify(resumeData));
+      setData(resumeData);
+      loadDataFromLocalStorage()
+
+      setError(null);
+
+    } catch (err) {
+      setError(err.message);
+      console.error('API call failed:', err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
 
 
   const handleRenderClick = () => {
@@ -179,16 +238,26 @@ export default function Navbar() {
         <Save className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
         <span>Save</span>
       </Button>
+
+      <Button
+        variant="outline"
+        className="group relative bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 hover:from-purple-500 hover:via-blue-400 hover:to-cyan-300 text-white border-none transition-all duration-300 hover:scale-[1.02]"
+        onClick={generateAIResume}
+        disabled={loading}
+      >
+        <Sparkles className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
+        <span>{loading ? "Generating..." : "AI Generate"}</span>
+      </Button>
     </div>
     <div className="flex items-center gap-3">
-      <Button variant="outline" className="group">
+      {/* <Button variant="outline" className="group">
         <LayoutTemplate className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
         <span>Template</span>
-      </Button>
-      <Button variant="default" className="group" onClick={handleRenderClick}>
+      </Button> */}
+      {/* <Button  id="renderButton" variant="default" className="group" onClick={handleRenderClick} >
         <Play className="h-[1rem] w-[1rem] scale-100 group-hover:scale-110 transition-transform mr-2" />
         <span>Render</span>
-      </Button>
+      </Button> */}
       <Button
         variant="secondary"
         className="group"
